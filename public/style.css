@@ -1,0 +1,167 @@
+
+* {
+  box-sizing: border-box; }
+html, body, body .gridtable{
+    height: 100%;
+}
+.gridtable{
+  padding-left: 0;
+  padding-right: 0;
+}
+body {
+  background: #222222;
+  }
+
+#main {
+  height: cal(100vh)  }
+#main > div {
+  height: 80vh;
+}
+.row > div {
+  height:80%
+}
+.bot{
+  height: 20%
+}
+.row{
+  padding-left: 2vh;
+  padding-top: 3vh;
+}
+
+footer {
+  position: fixed;
+  background-color: #555;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 8px; }
+  footer .bar {
+    overflow: hidden;
+    padding: 9px; }
+  footer .progress {
+    cursor: pointer; }
+  footer .progress-bar {
+    transition: none !important; }
+table, tr, th {
+  border: 2px solid white;
+
+}
+table th:hover{
+  background-color: wheat;  
+}
+
+.rock{
+    background-color: saddlebrown;  
+
+}
+.lava{
+  background-color: maroon;
+
+}
+.enemy{
+  background-color: black;
+}
+.grass{
+  background-color: limegreen;
+}
+.water{
+  background-color: deepskyblue;
+}
+.goal{
+  background-color: mediumpurple;
+}
+.start{
+  background-color: hotpink;
+}
+.lock{
+  background-color: darkslategrey;
+}
+.key{
+  background-color: yellow
+}
+.none{
+  background-color: lightslategrey;
+}
+.Active{
+ 
+  background-color: blue;
+}
+canvas {
+  background-color: white;
+  margin-left: 4vh;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+ul.thelist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul section {
+  float: left;
+  padding: 3vh;
+}
