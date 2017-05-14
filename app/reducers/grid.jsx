@@ -43,7 +43,7 @@ export default function(state = initialState, action){
       newState.multi = !newState.multi;
       break;
     case CLEAR:
-      return Object.assign(action.theState);
+      return Object.assign(action.theState, {multi: state.multi, type: state.type});
     default:
       return state
   }
