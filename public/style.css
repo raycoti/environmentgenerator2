@@ -254,8 +254,8 @@ ul section {
 @media screen and (min-width: 480px){
 
 .gridtable{
-  padding-left: 5vh;
-  padding-right: 5vh;
+  padding-left: 0;
+  padding-right: 0;
   }
   body .gridtable{
     height: 100%
