@@ -13,7 +13,7 @@ export default function(props) {
       <div className="slider round"></div>
       </label>
     <h3>Terrain Type</h3>
-    <select className="btn btn-default btn-select" onClick ={onCha}>
+    <select className="btn btn-default btn-select" onTouchEnd ={onCha} onClick={onCha}>
       {terainTypes.map((type) => {
         return (
           <option key={type} value={type}>{type.toUpperCase()}</option>

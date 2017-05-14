@@ -30305,7 +30305,7 @@
 	    ),
 	    _react2.default.createElement(
 	      'select',
-	      { className: 'btn btn-default btn-select', onClick: onCha },
+	      { className: 'btn btn-default btn-select', onTouchEnd: onCha, onClick: onCha },
 	      terainTypes.map(function (type) {
 	        return _react2.default.createElement(
 	          'option',
