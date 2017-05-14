@@ -1,13 +1,12 @@
 
 * {
   box-sizing: border-box; }
-html, body, body .gridtable{
+html, body, {
     height: 100%;
 }
-.gridtable{
-  padding-left: 0;
-  padding-right: 0;
-}
+
+
+
 body {
   background: #222222;
   }
@@ -164,4 +163,118 @@ ul.thelist {
 ul section {
   float: left;
   padding: 3vh;
+}
+
+
+.btn-select {
+    position: relative;
+    padding: 0;
+    min-width: 236px;
+    width: 100%;
+    border-radius: 0;
+    margin-bottom: 20px;
+}
+.btn-warning{
+  margin: auto;
+  align-items: center;
+}
+.levels{
+  margin-right: 10vh;
+  margin-left: 10vh;
+  margin-bottom: 5vh;
+  background-color: grey;
+  width: 100%;
+   display: inline-block;
+}
+.btn-select .btn-select-value {
+    padding: 6px 12px;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 34px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+}
+
+.btn-select .btn-select-arrow {
+    float: right;
+    line-height: 20px;
+    padding: 6px 10px;
+    top: 0;
+}
+
+.btn-select ul {
+    display: none;
+    background-color: grey;
+    color: black;
+    clear: both;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: none !important;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    top: 33px;
+    z-index: 999;
+}
+
+.btn-select ul li {
+    padding: 3px 6px;
+    text-align: left;
+}
+
+.btn-select ul li:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-select ul li.selected {
+    color: white;
+}
+
+
+/* Default Start */
+.btn-select.btn-default:hover, .btn-select.btn-default:active, .btn-select.btn-default.active {
+    border-color: #ccc;
+}
+
+.btn-select.btn-default ul li.selected {
+    background-color: #ccc;
+}
+
+.btn-select.btn-default ul, .btn-select.btn-default .btn-select-value {
+    background-color: white;
+    border: #ccc 1px solid;
+}
+
+.btn-select.btn-default:hover, .btn-select.btn-default.active {
+    background-color: #46b8da;
+}
+/* Default End */
+
+@media screen and (min-width: 480px){
+
+.gridtable{
+  padding-left: 5vh;
+  padding-right: 5vh;
+  }
+  body .gridtable{
+    height: 100%
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gridtable{
+  padding-left: 0;
+  padding-right: 0;
+  height: 60vh;
+  }
+  
+  body .gridtable{
+    height: 60vh
+  }
 }

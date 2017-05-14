@@ -23756,7 +23756,7 @@
 	          null,
 	          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _GridContainer2.default }),
 	          _react2.default.createElement(_reactRouterDom.Route, { path: '/levels', component: _LevelsContainer2.default }),
-	          _react2.default.createElement(_reactRouterDom.Route, { path: 'level/:id', component: _GridContainer2.default })
+	          _react2.default.createElement(_reactRouterDom.Route, { path: '/level/:id', component: _GridContainer2.default })
 	        )
 	      )
 	    )
@@ -27124,7 +27124,7 @@
 	      newState.multi = !newState.multi;
 	      break;
 	    case CLEAR:
-	      return initialState;
+	      return Object.assign(action.theState);
 	    default:
 	      return state;
 	  }
@@ -27149,7 +27149,12 @@
 	// maybe one action creator that increases a type
 	// maybe another that decreases that type 
 	var CLEAR = 'CLEAR';
-	
+	var clearState = {
+	  selected: {},
+	  blocks: [],
+	  type: 'none',
+	  multi: false
+	};
 	var initialState = {
 	  selected: {},
 	  blocks: [],
@@ -27159,7 +27164,8 @@
 	
 	var clearTable = exports.clearTable = function clearTable() {
 	  return {
-	    type: CLEAR
+	    type: CLEAR,
+	    theState: clearState
 	  };
 	};
 	
@@ -30167,6 +30173,9 @@
 	    },
 	    selectBlock: function selectBlock(block) {
 	      dispatch((0, _grid.selectBlock)(block));
+	    },
+	    clear: function clear() {
+	      dispatch((0, _grid.clearTable)());
 	    }
 	  };
 	};
@@ -30207,11 +30216,13 @@
 	      // this.setState({toggle: newSwitch})
 	      this.props.toggler();
 	      this.props.selectBlock({});
-	      //this.props.changeType('none')
+	      this.props.changeType('none');
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      //console.log(this.props.current)
 	      // the return below could be put into block select too maybe 
 	      return _react2.default.createElement(
@@ -30220,12 +30231,13 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'SELECTED BLOCK'
+	          'BLOCK Editor'
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-md-12' },
-	          _react2.default.createElement(
+	          _react2.default.createElement(_BlockSelect2.default, { toggle: this.multiToggle, handleChange: this.change }),
+	          this.props.current.id && _react2.default.createElement(
 	            'div',
 	            { className: 'col-md-8' },
 	            _react2.default.createElement(
@@ -30239,15 +30251,15 @@
 	              null,
 	              'Block TYPE: ',
 	              this.props.current.type
-	            ),
-	            this.props.selector ? _react2.default.createElement(
-	              'h2',
-	              null,
-	              'SELECTED TYPE: ',
-	              this.props.selectType
-	            ) : null
-	          ),
-	          _react2.default.createElement(_BlockSelect2.default, { toggle: this.multiToggle, handleChange: this.change })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-warning', onClick: function onClick() {
+	              return _this2.props.clear();
+	            } },
+	          'CLEAR GRID '
 	        )
 	      );
 	    }
@@ -30276,7 +30288,7 @@
 	    _react2.default.createElement(
 	      'h3',
 	      null,
-	      'Select'
+	      'Edit blocks'
 	    ),
 	    _react2.default.createElement(
 	      'label',
@@ -30287,16 +30299,16 @@
 	    _react2.default.createElement(
 	      'h3',
 	      null,
-	      'Terrain Types'
+	      'Terrain Type'
 	    ),
 	    _react2.default.createElement(
 	      'select',
-	      { onClick: onCha },
+	      { className: 'btn btn-default btn-select', onClick: onCha },
 	      terainTypes.map(function (type) {
 	        return _react2.default.createElement(
 	          'option',
 	          { key: type, value: type },
-	          type
+	          type.toUpperCase()
 	        );
 	      })
 	    )
@@ -30313,7 +30325,7 @@
 	
 	//
 	//this is a select  input stuff
-	var terainTypes = ['none', 'rock', 'grass', 'water', 'lava', 'goal', 'start', 'key', 'lock', 'enemy', 'move'];
+	var terainTypes = ['none', 'rock', 'grass', 'water', 'lava', 'goal', 'start', 'key', 'lock', 'enemy', 'moveable'];
 
 /***/ }),
 /* 294 */
@@ -30463,6 +30475,10 @@
 	
 	var _BlockContainer2 = _interopRequireDefault(_BlockContainer);
 	
+	var _LevelContainer = __webpack_require__(290);
+	
+	var _LevelContainer2 = _interopRequireDefault(_LevelContainer);
+	
 	var _grid = __webpack_require__(253);
 	
 	var _level = __webpack_require__(279);
@@ -30505,6 +30521,9 @@
 	    },
 	    load: function load(id) {
 	      dispatch((0, _level.loadLevel)(id, true));
+	    },
+	    clear: function clear() {
+	      dispatch((0, _grid.selectBlock)({}));
 	    }
 	  };
 	};
@@ -30556,7 +30575,8 @@
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      var Levelid = this.props.match.params.name || false;
+	      var Levelid = this.props.match.params.id || false;
+	      console.log(Levelid, this.props.match.params.id);
 	      if (Levelid) {
 	        this.props.load(Levelid);
 	      }
@@ -30564,17 +30584,21 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container-fluid gridtable' },
+	        { onClick: function onClick() {
+	            _this2.props.clear();
+	          }, className: 'container-fluid gridtable' },
 	        _react2.default.createElement(_navbar2.default, null),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-md-6 gridtable' },
+	          { className: 'col-md-6 col-md-offset-2 gridtable' },
 	          _react2.default.createElement(_Grid2.default, { theType: this.props.multi, blocks: this.state, gridBlocks: this.props.gridBlocks, id: this.props.selectedBlock.id, selectB: this.handleClick })
 	        ),
-	        _react2.default.createElement(_BlockContainer2.default, null)
+	        _react2.default.createElement(_BlockContainer2.default, null),
+	        _react2.default.createElement(_LevelContainer2.default, null)
 	      );
 	    }
 	  }]);
@@ -30705,9 +30729,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(225);
+	var _reactRouterDom = __webpack_require__(215);
 	
 	var _level = __webpack_require__(279);
+	
+	var _navbar = __webpack_require__(296);
+	
+	var _navbar2 = _interopRequireDefault(_navbar);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30737,31 +30765,42 @@
 	  function LevelsContainer() {
 	    _classCallCheck(this, LevelsContainer);
 	
-	    return _possibleConstructorReturn(this, (LevelsContainer.__proto__ || Object.getPrototypeOf(LevelsContainer)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (LevelsContainer.__proto__ || Object.getPrototypeOf(LevelsContainer)).call(this));
 	  }
 	
 	  _createClass(LevelsContainer, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	
 	      this.props.load();
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	
+	      console.log(this.props.levels);
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'container-fluid' },
+	        _react2.default.createElement(_navbar2.default, null),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Levels'
+	        ),
 	        this.props.levels.map(function (level) {
 	          return _react2.default.createElement(
 	            'div',
-	            null,
+	            { className: 'col-md-12 levels' },
 	            _react2.default.createElement(
-	              _reactRouter.Link,
+	              _reactRouterDom.Link,
 	              { to: '/level/' + level.id },
-	              ' LEVEL: ',
-	              level.name,
+	              ' ',
+	              _react2.default.createElement(
+	                'h4',
+	                null,
+	                ' LEVEL: ',
+	                level.name,
+	                ' '
+	              ),
 	              ' '
 	            ),
 	            ' ',

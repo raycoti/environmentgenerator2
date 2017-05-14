@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import {loadAll, loadLevel} from '../reducers/level';
+import Navbar from '../components/navbar'
 const mapStateToProps = (state) => {
   return {
     levels: state.level.levels,
@@ -17,16 +18,21 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class LevelsContainer extends Component{
-  componentDidMount(){
+  constructor(){
+    super()
+  }
 
+  componentDidMount(){
     this.props.load();
   }
   render(){
-
+    
   return (
-    <div>
+    <div className="container-fluid">
+    <Navbar />
+    <h1>Levels</h1>
       {this.props.levels.map((level)=>{
-        return <div><Link to={ `/level/${level.id}`}> LEVEL: {level.name} </Link> <a href={`/api/scene/${level.id}`}  target="_blank">JSON</a>
+        return <div className="col-md-12 levels"><Link to={ `/level/${level.id}`}> <h4> LEVEL: {level.name} </h4> </Link> <a href={`/api/scene/${level.id}`} target="_blank">JSON</a>
         </div>
       })}
     </div>

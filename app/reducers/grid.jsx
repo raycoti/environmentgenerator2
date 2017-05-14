@@ -9,7 +9,12 @@ import axios from 'axios'
 // maybe one action creator that increases a type
 // maybe another that decreases that type 
 const CLEAR = 'CLEAR';
-
+const clearState = {
+    selected: {},
+    blocks: [],
+    type: 'none',
+    multi: false,
+  }
 const initialState = {
     selected: {},
     blocks: [],
@@ -38,14 +43,15 @@ export default function(state = initialState, action){
       newState.multi = !newState.multi;
       break;
     case CLEAR:
-      return initialState;
+      return Object.assign(action.theState);
     default:
       return state
   }
   return newState;
 }
 export const clearTable = () => ({
-  type: CLEAR
+  type: CLEAR,
+  theState: clearState
 })
 
 export const loadBlocks = (blocks) => ({

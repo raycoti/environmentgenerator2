@@ -6,8 +6,6 @@ import App from './components/app';
 import GridContainer from './containers/GridContainer';
 import LevelsContainer from './containers/LevelsContainer';
 
-
-
 /*const loadScenes = ()=> {
   store.dispatch(loadAll())
 }*/
@@ -32,7 +30,7 @@ export default () => {
           <Switch>
             <Route exact path="/" component={GridContainer} />
             <Route path="/levels" component={LevelsContainer} />
-            <Route path="level/:id" component={GridContainer}/>
+            <Route path="/level/:id" component={GridContainer} />
           </Switch>
         </div>
       </Router>

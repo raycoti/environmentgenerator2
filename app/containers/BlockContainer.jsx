@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import BlockSelect from '../components/BlockSelect'
-import {changeType, selectBlock, selectType, toggleMulti} from '../reducers/grid'
+import {changeType, selectBlock, selectType, toggleMulti, clearTable} from '../reducers/grid'
 
 var newSwitch = false;
 
@@ -26,6 +26,9 @@ const mapDispatchToProps= (dispatch) => {
     },
     selectBlock(block){
       dispatch(selectBlock(block))
+    },
+    clear(){
+      dispatch(clearTable())
     }
   }
 }
@@ -45,7 +48,7 @@ class BlockContainer extends Component {
       this.props.chaChange(e.target.value)
     }
     if (this.props.selector){
-      console.log(this.props.selector)
+      
       this.props.changeType(e.target.value)
     }
     this.props.selectBlock({});
@@ -55,26 +58,24 @@ class BlockContainer extends Component {
    // this.setState({toggle: newSwitch})
     this.props.toggler();
     this.props.selectBlock({});
-    //this.props.changeType('none')
+    this.props.changeType('none')
   }
   render(){
     //console.log(this.props.current)
     // the return below could be put into block select too maybe 
     return (
       <div className = "col-md-4">
-        <h1>SELECTED BLOCK</h1>
+        <h1>BLOCK Editor</h1>
         <div className="col-md-12">
-          <div className="col-md-8">
+        
+            <BlockSelect toggle={this.multiToggle} handleChange={this.change} />
+            {this.props.current.id && <div className="col-md-8">
             <h2>Current BLOCK: {this.props.current.id}</h2>
             <h3>Block TYPE: {this.props.current.type}</h3>
-              {this.props.selector  ? (
-              <h2>SELECTED TYPE: {this.props.selectType}</h2>
-              ):
-            null}
           </div>
-            <BlockSelect toggle={this.multiToggle} handleChange={this.change} />
+        }
         </div>
-
+        <button className="btn btn-warning" onClick={()=>this.props.clear()}>CLEAR GRID </button>
       </div>
     )
   }

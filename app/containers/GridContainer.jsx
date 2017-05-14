@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import Grid from '../components/Grid';
 import NavBar from '../components/navbar'
-import BlockContainer from './BlockContainer'
+import BlockContainer from './BlockContainer';
+import LevelContainer from './LevelContainer';
 import {selectBlock, createBlock, changeType} from '../reducers/grid'
 import {loadLevel} from '../reducers/level';
 const findById = () => {
@@ -37,6 +38,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     load(id){
       dispatch(loadLevel(id, true))
+    },
+    clear(){
+      dispatch(selectBlock({}))
     }
   }
 }
@@ -76,7 +80,8 @@ class GridContainer extends Component {
 
   }
   componentWillMount(){
-    const Levelid = this.props.match.params.name || false;
+    const Levelid = this.props.match.params.id || false;
+    
     if(Levelid) {
       this.props.load(Levelid);
     }
@@ -84,12 +89,13 @@ class GridContainer extends Component {
   render(){
     
     return (
-      <div className="container-fluid gridtable">
+      <div onClick={()=>{this.props.clear()}} className="container-fluid gridtable">
         <NavBar />
-        <div className="col-md-6 gridtable">
+        <div  className="col-md-6 col-md-offset-2 gridtable">
           <Grid theType={this.props.multi} blocks={this.state} gridBlocks ={this.props.gridBlocks} id={this.props.selectedBlock.id} selectB =   {this.handleClick} />
         </div>
         <BlockContainer />
+        <LevelContainer />
       </div>
       
     )
