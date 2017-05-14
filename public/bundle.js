@@ -30204,7 +30204,7 @@
 	        this.props.chaChange(e.target.value);
 	      }
 	      if (this.props.selector) {
-	        console.log(this.props.selector);
+	
 	        this.props.changeType(e.target.value);
 	      }
 	      this.props.selectBlock({});
@@ -30576,7 +30576,7 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      var Levelid = this.props.match.params.id || false;
-	      console.log(Levelid, this.props.match.params.id);
+	
 	      if (Levelid) {
 	        this.props.load(Levelid);
 	      }
@@ -30776,7 +30776,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.levels);
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container-fluid' },
@@ -30789,7 +30789,7 @@
 	        this.props.levels.map(function (level) {
 	          return _react2.default.createElement(
 	            'div',
-	            { className: 'col-md-12 levels' },
+	            { key: level.id, className: 'col-md-12 levels' },
 	            _react2.default.createElement(
 	              _reactRouterDom.Link,
 	              { to: '/level/' + level.id },
