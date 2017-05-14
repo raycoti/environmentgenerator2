@@ -30198,9 +30198,7 @@
 	  _createClass(BlockContainer, [{
 	    key: 'change',
 	    value: function change(e) {
-	      //console.log(this.props.current.id)
-	      //console.log(this.props)
-	      console.log('changes');
+	
 	      if (this.props.current.id) {
 	        this.props.chaChange(e.target.value);
 	      }
@@ -30530,6 +30528,9 @@
 	    },
 	    clear: function clear() {
 	      dispatch((0, _grid.selectBlock)({}));
+	    },
+	    toggle: function toggle() {
+	      dispatch((0, _grid.toggleMulti)());
 	    }
 	  };
 	};
@@ -30582,7 +30583,9 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      var Levelid = this.props.match.params.id || false;
-	
+	      if (this.props.select) {
+	        this.props.toggle();
+	      }
 	      if (Levelid) {
 	        this.props.load(Levelid);
 	      }

@@ -4,7 +4,7 @@ import Grid from '../components/Grid';
 import NavBar from '../components/navbar'
 import BlockContainer from './BlockContainer';
 import LevelContainer from './LevelContainer';
-import {selectBlock, createBlock, changeType} from '../reducers/grid'
+import {selectBlock,toggleMulti, createBlock, changeType} from '../reducers/grid'
 import {loadLevel} from '../reducers/level';
 const findById = () => {
   return obj.id
@@ -41,6 +41,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     clear(){
       dispatch(selectBlock({}))
+    },
+    toggle(){
+      dispatch(toggleMulti())
     }
   }
 }
@@ -81,7 +84,9 @@ class GridContainer extends Component {
   }
   componentWillMount(){
     const Levelid = this.props.match.params.id || false;
-    
+    if (this.props.select){
+      this.props.toggle();
+    }
     if(Levelid) {
       this.props.load(Levelid);
     }
