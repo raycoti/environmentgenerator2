@@ -48,9 +48,7 @@ table, tr, th {
   border: 2px solid white;
 
 }
-table th:hover{
-  background-color: wheat;  
-}
+
 
 .rock{
     background-color: saddlebrown;  
@@ -84,10 +82,7 @@ table th:hover{
 .none{
   background-color: lightslategrey;
 }
-.Active{
- 
-  background-color: blue;
-}
+
 canvas {
   background-color: white;
   margin-left: 4vh;
@@ -265,6 +260,13 @@ ul section {
   body .gridtable{
     height: 100%
   }
+  table th:hover{
+  background-color: wheat;  
+}
+.Active{
+ 
+  background-color: blue;
+}
 }
 
 @media screen and (max-width: 480px) {

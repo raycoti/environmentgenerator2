@@ -15,7 +15,7 @@ const Grid = (props) => {
   const theBlocks = blockObj(props.gridBlocks);
   const thegrid = makeGrid(props.blocks.width, props.id, theBlocks)
   return (
-    <table width="100%" height="100%" onClick={props.selectB}>
+    <table width="100%" height="100%"  onClick={props.selectB}>
       <tbody>
         {thegrid}
     </tbody>

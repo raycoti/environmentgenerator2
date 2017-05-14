@@ -9,7 +9,7 @@ export default function(props) {
     <div className="col-md-4">
       <h3>Edit blocks</h3>
       <label className="switch">
-      <input onChange={props.toggle} type="checkbox" />
+      <input onChange={()=>{ props.toggle(); console.log('clicked')}} type="checkbox" />
       <div className="slider round"></div>
       </label>
     <h3>Terrain Type</h3>

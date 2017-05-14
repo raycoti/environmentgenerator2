@@ -30293,7 +30293,9 @@
 	    _react2.default.createElement(
 	      'label',
 	      { className: 'switch' },
-	      _react2.default.createElement('input', { onChange: props.toggle, type: 'checkbox' }),
+	      _react2.default.createElement('input', { onChange: function onChange() {
+	          props.toggle();console.log('clicked');
+	        }, type: 'checkbox' }),
 	      _react2.default.createElement('div', { className: 'slider round' })
 	    ),
 	    _react2.default.createElement(
