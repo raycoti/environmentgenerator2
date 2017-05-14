@@ -42,8 +42,7 @@ class BlockContainer extends Component {
     this.multiToggle= this.multiToggle.bind(this);
   }
   change(e){
-    //console.log(this.props.current.id)
-    //console.log(this.props)
+  
     if (this.props.current.id){
       this.props.chaChange(e.target.value)
     }

@@ -30200,6 +30200,7 @@
 	    value: function change(e) {
 	      //console.log(this.props.current.id)
 	      //console.log(this.props)
+	      console.log('changes');
 	      if (this.props.current.id) {
 	        this.props.chaChange(e.target.value);
 	      }
@@ -30282,6 +30283,7 @@
 	
 	exports.default = function (props) {
 	  var onCha = props.handleChange;
+	
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'col-md-4' },
@@ -30305,7 +30307,9 @@
 	    ),
 	    _react2.default.createElement(
 	      'select',
-	      { className: 'btn btn-default btn-select', onTouchEnd: onCha, onClick: onCha },
+	      { className: 'btn btn-default btn-select', onChange: function onChange(e) {
+	          return onCha(e);
+	        } },
 	      terainTypes.map(function (type) {
 	        return _react2.default.createElement(
 	          'option',
