@@ -1,4 +1,4 @@
-# Enviornment Generator
+# Environment Generator
 **A React application for creating levels for games that utilize a coordinate system. You can set the grid size and properties appropritate for your game**
 
 [**Try it out! (database reset every two days)**](https://simplelevelcreator2.herokuapp.com)
