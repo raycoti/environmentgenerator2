@@ -1,7 +1,7 @@
 # Enviornment Generator
 **A React application for creating levels for games that utilize a coordinate system. You can set the grid size and properties appropritate for your game**
 
-[**Try it out! (database reset every two days)**](https://simplelevelcreator.herokuapp.com)
+[**Try it out! (database reset every two days)**](https://simplelevelcreator2.herokuapp.com)
 ### Example game
 [![game](./public/terrain/game.png)](https://playcanv.as/p/C6vQ4bnn/).
 
@@ -77,7 +77,7 @@ You can simply npm install this to have it running as is. You may also change th
 * **selectType(newTerrain):** This action creator will set the type of the selected block to the terrain passed in.
 * **createBlock(block):** This action creator will create a new block in the state.
 * **changeType(newTerrain):** This action creator will update the terrain type of the selected block.
-* **submitLevel(name,blocks):**This action creator will save the level to the database. 
+* **submitLevel(name,blocks):** This action creator will save the level to the database. 
 
 
 
