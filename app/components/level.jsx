@@ -32,6 +32,7 @@ const Level = (props) => {
           </div>
         </fieldset>
 </form>
+
     </div>
   )
 }

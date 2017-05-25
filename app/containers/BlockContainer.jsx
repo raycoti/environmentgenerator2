@@ -75,6 +75,7 @@ class BlockContainer extends Component {
         }
         </div>
         <button className="btn btn-warning" onClick={()=>this.props.clear()}>CLEAR GRID </button>
+        
       </div>
     )
   }

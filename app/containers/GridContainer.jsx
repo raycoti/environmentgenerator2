@@ -101,6 +101,7 @@ class GridContainer extends Component {
         </div>
         <BlockContainer />
         <LevelContainer />
+       
       </div>
       
     )

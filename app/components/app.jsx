@@ -21,6 +21,7 @@ const app = function ({select,children, location}) {
   return (
     <div onClick ={() => select(clickClear)}>
           { children }
+          
     </div>
   );
 }

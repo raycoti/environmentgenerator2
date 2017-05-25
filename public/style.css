@@ -5,7 +5,12 @@ html, body, {
     height: 100%;
 }
 
-
+.footer {
+  
+   height:30px;
+   width:100%;
+   background:#999;
+}
 
 body {
   background: #222222;
