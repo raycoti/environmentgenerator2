@@ -1,1 +1,5 @@
 node_modules
+.vscode
+public/bundle.js
+public/bundle.js.map
+public/terrain/*
